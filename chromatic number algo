@@ -1,0 +1,85 @@
+from collections import defaultdict 
+  
+class Chromatic:
+    
+  
+    def __init__(self): 
+  
+        self.graph = defaultdict(list) 
+  
+    def addEdge(self, u, v): 
+        self.graph[u].append(v) 
+  
+    def DFSUtil(self, v, visited): 
+  
+        visited[v] = True
+        l.append(v)
+        
+  
+        for i in self.graph[v]: 
+            if visited[i] == False: 
+                self.DFSUtil(i, visited)
+    
+    def printdfs(self):
+        print(self.graph)
+        
+  
+    def Start_vertex(self, v): 
+  
+        visited = [False] * (max(self.graph)+1) 
+  
+        self.DFSUtil(v, visited)
+        
+        
+        
+l=[]  
+g = Chromatic()
+print("enter the number of verices")
+v=int(input())
+
+print("enter the vertices")
+vertcs=[int(x) for x in input().split()]
+for i in vertcs:
+    print("enter the neighbours of ",i)
+    neighbours=[int(x) for x in input().split()]
+    for j in neighbours:
+        g.addEdge(i,j)
+        
+g.printdfs()
+print("Depth first search of the given Graph from vertx 1 is") 
+g.Start_vertex(1) 
+
+print(l)
+colors=[0]*(v+1)
+colors[l[0]]=1
+for i in range(1,v):
+    flag=0
+    count=1
+    print("------")
+    l2=[]
+    print("neighbours of  {0} are {1}".format(l[i],g.graph[l[i]]))
+    for k in g.graph[l[i]]:
+           l2.append(colors[k])
+    print("color used are",l2)       
+    while(count in l2):
+        count+=1
+        
+    colors[l[i]]=count
+    print("color assigned to {0} is {1}".format(i,count))
+print(max(colors))    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
